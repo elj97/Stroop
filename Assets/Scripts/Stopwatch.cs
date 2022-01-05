@@ -8,9 +8,9 @@ namespace Stroop
 {
     public class Stopwatch : MonoBehaviour
     {
+		public Text m_currentTimeText;
 		bool m_stopwatchActive = false;
 		float m_currentTime;
-		public Text m_currentTimeText;
 
 		void Start()
 		{
@@ -23,8 +23,8 @@ namespace Stroop
 			{
 				m_currentTime = m_currentTime + Time.deltaTime;
 			}
-			//timespan time = TimeSpan.FromSeconds(m_currentTime);
-			//m_currentTimeText.text = time.ToString(@"mm\:ss\:fff");
+			TimeSpan time = TimeSpan.FromSeconds(m_currentTime);
+			m_currentTimeText.text = time.ToString(@"mm\:ss\:fff");
 		}
 
 		public void StartStopwatch()

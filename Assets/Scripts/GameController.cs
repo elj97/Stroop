@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +5,10 @@ namespace Stroop
 {
 	public class GameController : MonoBehaviour
 	{
+		#region
+		public Stopwatch m_stopwatch;
+		public ChangeScene m_changeScene;
+
 		[Header("Fields")]
 		[SerializeField] private int m_numberOfQuestions = 10;
 
@@ -28,11 +29,7 @@ namespace Stroop
 		[SerializeField] private int m_numberOfAnsweredQuestions;
 		
 		Color[] colors = new Color[4];
-
-		public Stopwatch m_stopwatch;
-		public ChangeScene m_changeScene;
-
-		private int m_colorInt, m_questionInt;
+		#endregion
 
 		private void Start()
 		{	
@@ -42,12 +39,13 @@ namespace Stroop
 			colors[2] = Color.yellow;
 			colors[3] = Color.magenta;
 
-			// load new question when game starts
-			LoadNewQuestion();
-
 			// start stopwatch when game starts
 			m_stopwatch.StartStopwatch();
+
+			// load new question when game starts
+			LoadNewQuestion();	
 		}
+
 		public void LoadNewQuestion()
 		{
 			// sets up random number for questions and colors - this is used to compare them later
@@ -57,8 +55,8 @@ namespace Stroop
 			// sets question text & color based on each list
 			m_question.text = m_questionTextOptions[m_questionInt];
 			m_question.color = colors[m_colorInt];
-
-			// not sure if I should keep this****
+			
+			// To ensure that text and color of text are not the same. If they are the same this will load another question.
 			while (m_questionInt == m_colorInt)
 			{
 				Debug.Log("Reloaded Question");
@@ -72,14 +70,19 @@ namespace Stroop
 
 			if(m_numberOfAnsweredQuestions  == m_numberOfQuestions)
 			{
+				// stops stopwatch when game end, then loads next scene
+				m_stopwatch.StopStopwatch();
+				PlayerPrefs.SetFloat("Stopwatch", m_totalTime);
 				m_changeScene.LoadNextScene();
 				return;
 			}
 
 			LoadNewQuestion();
 		}
-
-		// COLOR CHECKS
+		#region colorChecks
+		// Checks if button is same as the text color i.e. the answer is correct.
+		// if answer is correct then it will move on to another question
+		// if answer is incorrect then it will play a shake animation
 		public void CheckIfRed()
 		{
 			if ( m_question.color == Color.red)
@@ -139,6 +142,11 @@ namespace Stroop
 				return;
 			}
 		}
+#endregion
+		#region privateVariables
+		private int m_colorInt, m_questionInt;
+		private float m_totalTime;
+		#endregion
 	}
 }
 
