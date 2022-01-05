@@ -1,11 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Stroop
 {
-	public class SceneController : MonoBehaviour
+	public class ChangeScene : MonoBehaviour
 	{
-		internal static SceneController Instance;
 		public void LoadNextScene()
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
