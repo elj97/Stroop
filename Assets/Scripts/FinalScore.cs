@@ -7,7 +7,7 @@ namespace Stroop
 {
 	public class FinalScore : MonoBehaviour
 	{
-		[SerializeField] public Text m_finalScoreText;
+		[SerializeField] private Text m_finalScoreText;
 
 		float m_finalScore;
 

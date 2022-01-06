@@ -6,9 +6,6 @@ namespace Stroop
 	public class GameController : MonoBehaviour
 	{
 		#region
-		public Stopwatch m_stopwatch;
-		public ChangeScene m_changeScene;
-
 		[Header("Fields")]
 		[SerializeField] private int m_numberOfQuestions = 10;
 
@@ -17,18 +14,19 @@ namespace Stroop
 
 		[Space(5)]
 		[SerializeField] private Animator m_questionAnimator;
-		//[SerializeField] private int m_incorrectAnswerAnimation;
+
+		[SerializeField] Stopwatch m_stopwatch;
+		[SerializeField] public ChangeScene m_changeScene;
 
 		[Space(10)]
 		[Header("UI")]
 		[SerializeField] private Text m_question;
-		//public Button redButton, blueButton, yellowButton, pinkButton;
+
 		[Space(5)]
 		[SerializeField] private Text[] m_buttons;
 
 		[SerializeField] private int m_numberOfAnsweredQuestions;
-		
-		Color[] colors = new Color[4];
+
 		#endregion
 
 		private void Start()
@@ -146,6 +144,8 @@ namespace Stroop
 		#region privateVariables
 		private int m_colorInt, m_questionInt;
 		private float m_totalTime;
+
+		Color[] colors = new Color[4];
 		#endregion
 	}
 }

@@ -9,8 +9,6 @@ namespace Stroop
     public class Stopwatch : MonoBehaviour
     {
 		public Text m_currentTimeText;
-		bool m_stopwatchActive = false;
-		float m_currentTime;
 
 		void Start()
 		{
@@ -36,6 +34,9 @@ namespace Stroop
 		{
 			m_stopwatchActive = false;
 		}
+
+		private bool m_stopwatchActive = false;
+		private float m_currentTime;
 	}
 }
 
