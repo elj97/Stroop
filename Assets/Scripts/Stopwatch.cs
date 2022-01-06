@@ -9,6 +9,8 @@ namespace Stroop
     public class Stopwatch : MonoBehaviour
     {
 		public Text m_currentTimeText;
+		bool m_stopwatchActive = false;
+		float m_currentTime;
 
 		void Start()
 		{
@@ -25,19 +27,16 @@ namespace Stroop
 			m_currentTimeText.text = time.ToString(@"mm\:ss\:fff");
 		}
 
-		public void StartStopwatch()
+		public void ToggleStopwatch(bool toggle)
 		{
-			m_stopwatchActive = true;
-		}
+			m_stopwatchActive = toggle;
 
-		public void StopStopwatch()
-		{
-			m_stopwatchActive = false;
+			if (toggle == false)
+			{
+				PlayerPrefs.SetFloat("Stopwatch", m_currentTime);
+				m_stopwatchActive = false;
+			}
 		}
-		#region privateVariables
-		private bool m_stopwatchActive = false;
-		private float m_currentTime;
-		#endregion
 	}
 }
 

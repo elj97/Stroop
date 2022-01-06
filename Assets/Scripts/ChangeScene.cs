@@ -7,19 +7,9 @@ namespace Stroop
 {
 	public class ChangeScene : MonoBehaviour
 	{
-		public void LoadNextScene()
+		public void LoadScene(string sceneName)
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-		}
-
-		public void LoadMainMenu()
-		{
-			SceneManager.LoadScene("Main Menu");
-		}
-
-		public void LoadQuiz()
-		{
-			SceneManager.LoadScene("In-Game");
+			SceneManager.LoadScene(sceneName);
 		}
 
 		public void QuitGame()

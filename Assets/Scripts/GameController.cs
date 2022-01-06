@@ -38,7 +38,7 @@ namespace Stroop
 			colors[3] = Color.magenta;
 
 			// start stopwatch when game starts
-			m_stopwatch.StartStopwatch();
+			m_stopwatch.ToggleStopwatch(true);
 
 			// load new question when game starts
 			LoadNewQuestion();	
@@ -66,13 +66,11 @@ namespace Stroop
 		{
 			m_numberOfAnsweredQuestions++;
 
-			if(m_numberOfAnsweredQuestions  == m_numberOfQuestions)
+			if(m_numberOfAnsweredQuestions == m_numberOfQuestions)
 			{
 				// stops stopwatch when game end, then loads next scene
-				m_stopwatch.StopStopwatch();
-				PlayerPrefs.SetFloat("Stopwatch", m_totalTime);
-				m_changeScene.LoadNextScene();
-				return;
+				m_stopwatch.ToggleStopwatch(false);
+				m_changeScene.LoadScene("End Screen");
 			}
 
 			LoadNewQuestion();
@@ -92,7 +90,6 @@ namespace Stroop
 			{
 				Debug.Log("Incorrect Answer");
 				m_questionAnimator.SetTrigger("IncorrectAnswer");
-				return;
 			}
 		}
 
@@ -107,7 +104,6 @@ namespace Stroop
 			{
 				Debug.Log("Incorrect Answer");
 				m_questionAnimator.SetTrigger("IncorrectAnswer");
-				return;
 			}
 		}
 
@@ -122,7 +118,6 @@ namespace Stroop
 			{
 				Debug.Log("Incorrect Answer");
 				m_questionAnimator.SetTrigger("IncorrectAnswer");
-				return;
 			}
 		}
 
@@ -137,16 +132,14 @@ namespace Stroop
 			{
 				Debug.Log("Incorrect Answer");
 				m_questionAnimator.SetTrigger("IncorrectAnswer");
-				return;
 			}
 		}
 #endregion
 		#region privateVariables
 		private int m_colorInt, m_questionInt;
-		private float m_totalTime;
 		private int m_numberOfAnsweredQuestions;
 
-		Color[] colors = new Color[4];
+		private Color[] colors = new Color[4];
 		#endregion
 	}
 }

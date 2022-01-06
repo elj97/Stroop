@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,19 +10,18 @@ namespace Stroop
 	{
 		[SerializeField] private Text m_finalScoreText;
 
-		float m_finalScore;
-
 		private void Start()
 		{
 			// Fetch PlayerPref data
 			SetFinalScore();
 		}
 
-		// TODO: make the finalscore show
+		// Sets and shows the finalscore show
 		void SetFinalScore()
 		{
-			m_finalScore = PlayerPrefs.GetFloat("Stopwatch");
-			m_finalScoreText.text = ("Total time taken: " + m_finalScore.ToString(@"mm\:ss\:fff"));
+			float finalScore = PlayerPrefs.GetFloat("Stopwatch");
+			TimeSpan finalTime = TimeSpan.FromSeconds(finalScore);
+			m_finalScoreText.text = ("Total time taken: " + finalTime.ToString(@"mm\:ss\:fff"));
 		}
 	}
 }
