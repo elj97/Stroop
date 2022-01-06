@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// This script initializes base variables and controls the outcome of what the player has inputed.
+/// This script initializes base variables and controls the outcome of what the player has inputted.
 /// </summary>
 namespace Stroop
 {
