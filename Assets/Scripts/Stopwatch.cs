@@ -34,9 +34,10 @@ namespace Stroop
 		{
 			m_stopwatchActive = false;
 		}
-
+		#region privateVariables
 		private bool m_stopwatchActive = false;
 		private float m_currentTime;
+		#endregion
 	}
 }
 

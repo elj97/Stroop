@@ -6,7 +6,7 @@ namespace Stroop
 	public class GameController : MonoBehaviour
 	{
 		#region
-		[Header("Fields")]
+		[Header("Questions")]
 		[SerializeField] private int m_numberOfQuestions = 10;
 
 		[Space(5)]
@@ -15,17 +15,17 @@ namespace Stroop
 		[Space(5)]
 		[SerializeField] private Animator m_questionAnimator;
 
-		[SerializeField] Stopwatch m_stopwatch;
-		[SerializeField] public ChangeScene m_changeScene;
-
-		[Space(10)]
-		[Header("UI")]
+		[Space(5)]
 		[SerializeField] private Text m_question;
 
 		[Space(5)]
 		[SerializeField] private Text[] m_buttons;
 
-		[SerializeField] private int m_numberOfAnsweredQuestions;
+		[Space(10)]
+		[SerializeField] private Stopwatch m_stopwatch;
+		
+		[Space(5)]
+		[SerializeField] private ChangeScene m_changeScene;
 
 		#endregion
 
@@ -55,7 +55,7 @@ namespace Stroop
 			m_question.color = colors[m_colorInt];
 			
 			// To ensure that text and color of text are not the same. If they are the same this will load another question.
-			while (m_questionInt == m_colorInt)
+			if (m_questionInt == m_colorInt)
 			{
 				Debug.Log("Reloaded Question");
 				LoadNewQuestion();
@@ -144,6 +144,7 @@ namespace Stroop
 		#region privateVariables
 		private int m_colorInt, m_questionInt;
 		private float m_totalTime;
+		private int m_numberOfAnsweredQuestions;
 
 		Color[] colors = new Color[4];
 		#endregion
