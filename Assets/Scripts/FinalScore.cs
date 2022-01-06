@@ -1,9 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This script utilizes PlayerPrefs to set the final score.
+/// </summary>
 namespace Stroop
 {
 	public class FinalScore : MonoBehaviour
@@ -17,7 +18,7 @@ namespace Stroop
 		}
 
 		// Sets and shows the finalscore show
-		void SetFinalScore()
+		private void SetFinalScore()
 		{
 			float finalScore = PlayerPrefs.GetFloat("Stopwatch");
 			TimeSpan finalTime = TimeSpan.FromSeconds(finalScore);

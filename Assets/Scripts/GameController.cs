@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This script initializes base variables and controls the outcome of what the player has inputed.
+/// </summary>
 namespace Stroop
 {
 	public class GameController : MonoBehaviour
@@ -8,9 +11,6 @@ namespace Stroop
 		#region
 		[Header("Questions")]
 		[SerializeField] private int m_numberOfQuestions = 10;
-
-		[Space(5)]
-		[SerializeField] private string[] m_questionTextOptions = {"Red", "Blue", "Yellow", "Pink"};
 
 		[Space(5)]
 		[SerializeField] private Animator m_questionAnimator;
@@ -44,7 +44,7 @@ namespace Stroop
 			LoadNewQuestion();	
 		}
 
-		public void LoadNewQuestion()
+		private void LoadNewQuestion()
 		{
 			// sets up random number for questions and colors - this is used to compare them later
 			m_questionInt = Random.Range(0, m_questionTextOptions.Length);
@@ -62,7 +62,7 @@ namespace Stroop
 			}
 		}
 
-		public void CorrectAnswer()
+		private void CorrectAnswer()
 		{
 			m_numberOfAnsweredQuestions++;
 
@@ -71,6 +71,7 @@ namespace Stroop
 				// stops stopwatch when game end, then loads next scene
 				m_stopwatch.ToggleStopwatch(false);
 				m_changeScene.LoadScene("End Screen");
+				return;
 			}
 
 			LoadNewQuestion();
@@ -79,11 +80,43 @@ namespace Stroop
 		// Checks if button is same as the text color i.e. the answer is correct.
 		// if answer is correct then it will move on to another question
 		// if answer is incorrect then it will play a shake animation
-		public void CheckIfRed()
+		public void CheckAnswer(string colorString)
 		{
-			if ( m_question.color == Color.red)
+			bool correct = false;
+
+			switch (colorString)
 			{
-				Debug.Log("yes Red");
+				case "Red":
+					if (m_question.color == Color.red)
+					{
+						correct = true;
+					}
+					break;
+				case "Blue":
+					if (m_question.color == Color.blue)
+					{
+						correct = true;
+					}
+					break;
+				case "Yellow":
+					if (m_question.color == Color.yellow)
+					{
+						correct = true;
+					}
+					break;
+				case "Pink":
+					if (m_question.color == Color.magenta)
+					{
+						correct = true;
+					}
+					break;
+				default:
+					Debug.Log("Color does not exist");
+					break;
+			}
+			if (correct)
+			{
+				Debug.Log($"Correct Answer, {colorString}");
 				CorrectAnswer();
 			}
 			else
@@ -93,54 +126,16 @@ namespace Stroop
 			}
 		}
 
-		public void CheckIfBlue()
-		{
-			if ( m_question.color == Color.blue)
-			{
-				Debug.Log("yes Blue");
-				CorrectAnswer();
-			}
-			else
-			{
-				Debug.Log("Incorrect Answer");
-				m_questionAnimator.SetTrigger("IncorrectAnswer");
-			}
-		}
-
-		public void CheckIfYellow()
-		{
-			if ( m_question.color == Color.yellow)
-			{
-				Debug.Log("yes Yellow");
-				CorrectAnswer();
-			}
-			else
-			{
-				Debug.Log("Incorrect Answer");
-				m_questionAnimator.SetTrigger("IncorrectAnswer");
-			}
-		}
-
-		public void CheckIfPink()
-		{
-			if ( m_question.color == Color.magenta)
-			{
-				Debug.Log("yes pink");
-				CorrectAnswer();
-			}
-			else
-			{
-				Debug.Log("Incorrect Answer");
-				m_questionAnimator.SetTrigger("IncorrectAnswer");
-			}
-		}
 #endregion
-		#region privateVariables
+#region privateVariables
+		private string[] m_questionTextOptions = { "Red", "Blue", "Yellow", "Pink" };
 		private int m_colorInt, m_questionInt;
 		private int m_numberOfAnsweredQuestions;
 
 		private Color[] colors = new Color[4];
-		#endregion
+#endregion
+
+		public enum Colors { Red, Blue, Yellow, Pink }
 	}
 }
 

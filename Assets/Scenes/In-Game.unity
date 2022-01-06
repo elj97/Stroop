@@ -561,14 +561,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1885313825}
         m_TargetAssemblyTypeName: Stroop.GameController, Assembly-CSharp
-        m_MethodName: CheckIfRed
-        m_Mode: 1
+        m_MethodName: CheckAnswer
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Red
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &391363944
@@ -993,14 +993,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1885313825}
         m_TargetAssemblyTypeName: Stroop.GameController, Assembly-CSharp
-        m_MethodName: CheckIfBlue
-        m_Mode: 1
+        m_MethodName: CheckAnswer
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Blue
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &920116937
@@ -1528,14 +1528,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1885313825}
         m_TargetAssemblyTypeName: Stroop.GameController, Assembly-CSharp
-        m_MethodName: CheckIfPink
-        m_Mode: 1
+        m_MethodName: CheckAnswer
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Pink
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1655435972
@@ -1677,14 +1677,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1885313825}
         m_TargetAssemblyTypeName: Stroop.GameController, Assembly-CSharp
-        m_MethodName: CheckIfYellow
-        m_Mode: 1
+        m_MethodName: CheckAnswer
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Yellow
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1684922320

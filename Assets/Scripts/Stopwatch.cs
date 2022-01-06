@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+/// <summary>
+/// This script handles the recording of time the player spent to complete the quiz and then sets to the PlayerPrefs.
+/// </summary>
 namespace Stroop
 {
     public class Stopwatch : MonoBehaviour
@@ -12,12 +13,12 @@ namespace Stroop
 		bool m_stopwatchActive = false;
 		float m_currentTime;
 
-		void Start()
+		private void Start()
 		{
 			m_currentTime = 0;
 		}
 
-		void Update()
+		private void Update()
 		{
 			if(m_stopwatchActive == true)
 			{
